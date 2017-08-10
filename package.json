@@ -1,0 +1,28 @@
+{
+  "name": "basic-shape-operations",
+  "version": "1.0.0",
+  "description": "Simple library that defines folllowing actions on simple shapes: check intersection, find intersection points, find distance, find bounding rectangle",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run build && mocha lib/**/tests.js",
+    "build": "webpack"
+  },
+  "keywords": [
+    "shape",
+    "intersection",
+    "distance",
+    "plane"
+  ],
+  "author": "Max Shvets",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "webpack": "^3.5.2"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.0"
+  }
+}

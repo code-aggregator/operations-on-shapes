@@ -1,3 +1,3 @@
-import rectanglesIntersect from "./intersections/rectangles"
+import rectanglesIntersect from "./intersections/rectangles";
 
-let intersect = rectanglesIntersect([1, 2], [3, 4], [2, 3], [3, 6]);
+rectanglesIntersect([{x: 1, y:2}, {x:2, y: 5}], [{x:3, y:8}, {x:6, y: 8}]);

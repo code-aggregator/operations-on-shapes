@@ -1,3 +1,3 @@
-export default function point (x, y) {
+export function point (x, y) {
     return {x, y}
 }

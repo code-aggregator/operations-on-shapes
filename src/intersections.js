@@ -1,4 +1,6 @@
-import { segmentsIntersect } from "./segments"
+export function segmentsIntersect ([x, y], [x_1, y_1]) {
+    return !((y < x_1) || (y_1 < x))
+}
 
 export function rectanglesIntersect ([upLeft1, bottomRight1], [upLeft2, bottomRight2]) {
     return segmentsIntersect([upLeft1.x, bottomRight1.x], [upLeft2.x, bottomRight2.x]) &&

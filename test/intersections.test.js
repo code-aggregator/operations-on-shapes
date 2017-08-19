@@ -1,7 +1,6 @@
 import { assert } from "chai";
-import { rectanglesIntersect } from "../src/intersections/rectangles";
-import { segmentsIntersect } from "../src/intersections/segments"
-import { point } from "../src/constructors/point";
+import { segmentsIntersect, rectanglesIntersect } from "../src/intersections"
+import { point } from "../src/constructors";
 
 describe("segmentsIntersect", function () {
     it("returns true if segments intersect", function () {

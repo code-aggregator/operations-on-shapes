@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { segmentsIntersect, rectanglesIntersect } from "../src/intersections"
+import { segmentsIntersect, rectanglesIntersect, lineSegmentsIntersect } from "../src/intersections"
 import { point } from "../src/constructors";
 
 describe("segmentsIntersect", function () {
@@ -29,4 +29,58 @@ describe("rectanglesIntersect", function () {
         assert.isNotOk(rectanglesIntersect([point(1, 2), point(4, 4)], [point(5, 5), point(6, 7)]));
     });
 });
+
+describe("lineSegmentsIntersect", function () {
+    it("returns true if line segments intersect", function () {
+        assert(
+            lineSegmentsIntersect([point(1, 1), point(5, 6)], [point(1, 1), point(5, 6)]),
+            "line segments are the same"
+        );
+        assert(
+            lineSegmentsIntersect([point(1, 1), point(1, 3)], [point(2, 2), point(4, 4)]),
+            "line segment have continuous amount of intersection points"
+        );
+        assert(
+            lineSegmentsIntersect([point(1, 1), point(5, 6)], [point(3, 4), point(1, 1)]),
+            "line segments have one intersection point that's is not an end of any segment"
+        );
+        assert(
+            lineSegmentsIntersect([point(2, 2), point(4, 4)], [point(4, 2), point(2, 4)]),
+            "line segments have one common end"
+        );
+        assert(
+            lineSegmentsIntersect([point(2, 2), point(4, 4)], [point(4, 2), point(3, 3)]),
+            "end of one segment lies on the other segment"
+        );
+        assert(
+            lineSegmentsIntersect([point(0, 2), point(0, 4)], [point(-1, 1), point(1, 5)]),
+            "one of the segments is parallel to the y-axis"
+        );
+    });
+
+    it("returns false if they don't", function () {
+        assert.isNotOk(
+            lineSegmentsIntersect([point(1, 1), point(2, 3)], [point(1, 2), point(2, 4)]),
+            "line segments are parts of parallel lines"
+        );
+        assert.isNotOk(
+            lineSegmentsIntersect([point(3, 4), point(5, 6)], [point(-2, -3), point(-1, -1)]),
+            "line segment are not parts of parallel lines"
+        );
+        assert.isNotOk(
+            lineSegmentsIntersect([point(1, 1), point(2, 2)], [point(3, 3), point(4, 4)]),
+            "line segments are parts of one line"
+        );
+        assert.isNotOk(
+            lineSegmentsIntersect([point(0, 2), point(0, 4)], [point(-1, 1), point(1, 0)]),
+            "one of the segments is parallel to the y-axis"
+        );
+        assert.isNotOk(
+            lineSegmentsIntersect([point(0, 2), point(0, 4)], [point(1, 1), point(1, 3)]),
+            "both segment are parallel to the y-axis"
+        )
+    })
+});
+
+
 

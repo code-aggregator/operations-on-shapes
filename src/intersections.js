@@ -6,3 +6,7 @@ export function rectanglesIntersect ([upLeft1, bottomRight1], [upLeft2, bottomRi
     return segmentsIntersect([upLeft1.x, bottomRight1.x], [upLeft2.x, bottomRight2.x]) &&
         segmentsIntersect([upLeft1.y, bottomRight1.y], [upLeft2.y, bottomRight2.y]);
 }
+
+export function lineSegmentsIntersect ([start1, end1], [start2, end2]) {
+
+}

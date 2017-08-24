@@ -33,20 +33,20 @@ describe("rectanglesIntersect", function () {
 describe("lineSegmentsIntersect", function () {
     it("returns true if line segments intersect", function () {
         assert(
-            lineSegmentsIntersect([point(1, 1), point(5, 6)], [point(1, 1), point(5, 6)]),
-            "line segments are the same"
-        );
-        assert(
-            lineSegmentsIntersect([point(1, 1), point(1, 3)], [point(2, 2), point(4, 4)]),
-            "line segment have continuous amount of intersection points"
-        );
-        assert(
-            lineSegmentsIntersect([point(1, 1), point(5, 6)], [point(3, 4), point(1, 1)]),
-            "line segments have one intersection point that's is not an end of any segment"
+            lineSegmentsIntersect([point(1, 1), point(5, 6)], [point(3, 4), point(4, 2)]),
+            "line segments have one intersection point that is not an end of any segment"
         );
         assert(
             lineSegmentsIntersect([point(2, 2), point(4, 4)], [point(4, 2), point(2, 4)]),
             "line segments have one common end"
+        );
+        assert(
+            lineSegmentsIntersect([point(1, 1), point(5, 6)], [point(1, 1), point(5, 6)]),
+            "line segments are the same"
+        );
+        assert(
+            lineSegmentsIntersect([point(1, 1), point(3, 3)], [point(2, 2), point(4, 4)]),
+            "line segments have continuous amount of intersection points"
         );
         assert(
             lineSegmentsIntersect([point(2, 2), point(4, 4)], [point(4, 2), point(3, 3)]),

@@ -1,4 +1,5 @@
-import { point, pointInBasis } from "./constructors"
+import { point, pointInBasis } from "./constructors";
+import { boundingRect } from "./boundingRectangles";
 
 export function segmentsIntersect ([x, y], [x_1, y_1]) {
     return !((y < x_1) || (y_1 < x))
@@ -19,7 +20,7 @@ export function rectanglesIntersect ([upLeft1, bottomRight1], [upLeft2, bottomRi
  * @returns {boolean}
  */
 
-export function lineSegmentsIntersect ([start1, end1], [start2, end2]) {
+function lineSegmentsIntersect ([start1, end1], [start2, end2]) {
     let basisX1 = end1.x - start1.x;
     let basisY1 = end1.y - start1.y;
     let basisX2 = end2.x - start2.x;
@@ -39,4 +40,20 @@ export function lineSegmentsIntersect ([start1, end1], [start2, end2]) {
 
         return -1 <= newBasisY && newBasisY <= 0 && 0 <= newBasisX && newBasisX <= 1;
     }
+}
+
+let intersectionChecks = {
+    lineSegment: {
+        lineSegment: lineSegmentsIntersect
+    }
+};
+
+export function shapesIntersect (shape1, shape2) {
+    if ( !rectanglesIntersect(boundingRect(shape1), boundingRect(shape2)) ) {
+        return false
+    }
+
+    return intersectionChecks[shape1.type][shape2.type](
+        shape1.representation, shape2.representation
+    );
 }

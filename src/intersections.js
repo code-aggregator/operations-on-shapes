@@ -1,13 +1,17 @@
 import { point, pointInBasis } from "./constructors";
 import { boundingRect } from "./boundingRectangles";
 
-export function segmentsIntersect ([x, y], [x_1, y_1]) {
-    return !((y < x_1) || (y_1 < x))
+export function segmentsIntersect ([x1, y1], [x2, y2]) {
+    return !((y1 < x2) || (y2 < x1))
 }
 
 export function rectanglesIntersect ([upLeft1, bottomRight1], [upLeft2, bottomRight2]) {
     return segmentsIntersect([upLeft1.x, bottomRight1.x], [upLeft2.x, bottomRight2.x]) &&
         segmentsIntersect([upLeft1.y, bottomRight1.y], [upLeft2.y, bottomRight2.y]);
+}
+
+function pointInSegment (p, [x, y]) {
+    return Math.min(x, y) <= p <= Math.max(x, y)
 }
 
 /**

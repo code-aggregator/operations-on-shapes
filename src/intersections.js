@@ -25,25 +25,24 @@ function pointInSegment (p, [x, y]) {
  */
 
 function lineSegmentsIntersect ([start1, end1], [start2, end2]) {
-    let basisX1 = end1.x - start1.x;
-    let basisY1 = end1.y - start1.y;
-    let basisX2 = end2.x - start2.x;
-    let basisY2 = end2.y - start2.y;
-    let translatedStart2 = point(start2.x - start1.x, start2.y - start1.y);
+    let deltaX1 = end1.x - start1.x;
+    let deltaY1 = end1.y - start1.y;
+    let deltaX2 = end2.x - start2.x;
+    let deltaY2 = end2.y - start2.y;
 
-    if (basisX1 * basisY2 === basisX2 * basisY1) {
-        let {y:newBasisY} = pointInBasis(
-            translatedStart2, [basisX1, basisY1], [basisY2, -basisX2]
-        );
+    let c1 = deltaX1 * start1.x - deltaY1 * start1.y;
+    let c2 = deltaX2 * start2.x - deltaY2 * start2.y;
 
-        return newBasisY === 0;
-    } else {
-        let {x:newBasisX, y:newBasisY} = pointInBasis(
-            translatedStart2, [basisX1, basisY1], [basisX2, basisY2]
-        );
+    let determinant = deltaY2 * deltaX1 - deltaY1 * deltaX2;
 
-        return -1 <= newBasisY && newBasisY <= 0 && 0 <= newBasisX && newBasisX <= 1;
+    if (determinant === 0) {
+        return c1 === c2
     }
+
+    let intersectionPointY = deltaY2 * c1 - deltaY1 * c2;
+
+    return pointInSegment(intersectionPointY, [start1.y, end1.y]) &&
+        pointInSegment(intersectionPointY, [start2.y, end2.y])
 }
 
 let intersectionChecks = {

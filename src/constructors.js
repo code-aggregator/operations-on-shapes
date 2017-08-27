@@ -16,5 +16,16 @@ export function shape (type, representation) {
 }
 
 export function lineSegment (start, end) {
-    return shape("lineSegment", [start, end]);
+    let deltaX = end.x - start.x;
+    let deltaY = end.y - start.y;
+    let c = deltaX * start.x - deltaY * start.y;
+
+    return shape("lineSegment", {
+        points: [start, end],
+        coefs: {
+            a: -deltaY,
+            b: deltaX,
+            c: c
+        }
+    });
 }

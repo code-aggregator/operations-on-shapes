@@ -27,10 +27,18 @@ describe("shape", function () {
 });
 
 describe("lineSegment", function () {
-    it("creates object that contains coordinates of a start and end of a line segment", function () {
+    it("creates object that contains coordinates of a start and an end of a line segment," +
+        "and also coefficients that define the line of which segment is part", function () {
         assert.deepEqual(lineSegment(point(2, 4), point(1, 1)), {
             type: "lineSegment",
-            representation: [{x: 2, y: 4}, {x: 1, y: 1}]
+            representation: {
+                points: [{x: 2, y: 4}, {x: 1, y: 1}],
+                coefs: {
+                    a: 3,
+                    b: -1,
+                    c: 10
+                }
+            }
         })
     })
 });

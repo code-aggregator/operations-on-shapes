@@ -1,5 +1,5 @@
 export function point (x, y) {
-    return {x, y}
+    return {type: "point", x, y}
 }
 
 export function pointInBasis ({x, y}, [x11, x12], [x21, x22]) {
@@ -11,21 +11,18 @@ export function pointInBasis ({x, y}, [x11, x12], [x21, x22]) {
     )
 }
 
-export function shape (type, representation) {
-    return {type, representation}
-}
-
 export function lineSegment (start, end) {
     let deltaX = end.x - start.x;
     let deltaY = end.y - start.y;
     let c = deltaX * start.x - deltaY * start.y;
 
-    return shape("lineSegment", {
+    return {
+        type: "lineSegment",
         points: [start, end],
         coefs: {
             a: -deltaY,
             b: deltaX,
             c: c
         }
-    });
+    };
 }

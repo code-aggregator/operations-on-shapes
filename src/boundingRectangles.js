@@ -12,5 +12,5 @@ let shapeBoundingRectFunc = {
 };
 
 export function boundingRect (shape) {
-    return shapeBoundingRectFunc[shape.type](shape.representation);
+    return shapeBoundingRectFunc[shape.type](shape);
 }

@@ -1,9 +1,9 @@
 import { assert } from "chai";
-import { point, pointInBasis, shape, lineSegment } from "../src/constructors";
+import { point, pointInBasis, lineSegment } from "../src/constructors";
 
 describe("point", function () {
     it("creates object of the from {x: x, y: y} to represent a point", function () {
-        assert.deepEqual(point(1, 2), {x: 1, y: 2});
+        assert.deepEqual(point(1, 2), {type: "point", x: 1, y: 2});
     });
 });
 
@@ -19,25 +19,16 @@ describe("pointInBasis", function () {
     });
 });
 
-describe("shape", function () {
-    it("creates object describing arbitrary shape, " +
-        "that contains shape's name and data representation", function () {
-        assert.deepEqual(shape("circle", [0, 2]), {type: "circle", representation: [0, 2]});
-    })
-});
-
 describe("lineSegment", function () {
     it("creates object that contains coordinates of a start and an end of a line segment," +
         "and also coefficients that define the line of which segment is part", function () {
         assert.deepEqual(lineSegment(point(2, 4), point(1, 1)), {
             type: "lineSegment",
-            representation: {
-                points: [{x: 2, y: 4}, {x: 1, y: 1}],
-                coefs: {
-                    a: 3,
-                    b: -1,
-                    c: 10
-                }
+            points: [point(2, 4), point(1, 1)],
+            coefs: {
+                a: 3,
+                b: -1,
+                c: 10
             }
         })
     })

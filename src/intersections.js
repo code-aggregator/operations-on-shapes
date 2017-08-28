@@ -40,7 +40,5 @@ export function shapesIntersect (shape1, shape2) {
         return false
     }
 
-    return intersectionChecks[shape1.type][shape2.type](
-        shape1.representation, shape2.representation
-    );
+    return intersectionChecks[shape1.type][shape2.type](shape1, shape2);
 }

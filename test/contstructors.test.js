@@ -30,6 +30,6 @@ describe("lineSegment", function () {
                 b: -1,
                 c: 10
             }
-        })
+        });
     })
 });

@@ -1,4 +1,4 @@
-import { boundingRect } from "./boundingRectangles";
+import { boundingRect } from "./boundingRectangle";
 
 export function segmentsIntersect ([x1, y1], [x2, y2]) {
     return !((y1 < x2) || (y2 < x1))

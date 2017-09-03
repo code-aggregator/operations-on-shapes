@@ -1,9 +1,9 @@
 import { assert } from "chai";
-import { boundingRect } from "../src/boundingRectangles";
+import { boundingRect } from "../src/boundingRectangle";
 import { point, lineSegment } from "../src/constructors";
 
 describe("boundingRect", function () {
-    describe("#lineSegment", function () {
+    describe("line segment", function () {
         it("returns a minimal rectangle that contains given line segment", function () {
             assert.deepEqual(
                 boundingRect(lineSegment(point(1, 3), point(5, 4))),

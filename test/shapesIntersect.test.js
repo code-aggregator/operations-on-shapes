@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { segmentsIntersect, rectanglesIntersect, shapesIntersect } from "../src/intersections"
+import { segmentsIntersect, rectanglesIntersect, shapesIntersect } from "../src/shapesIntersect"
 import { point, lineSegment } from "../src/constructors";
 
 describe("segmentsIntersect", function () {
@@ -31,7 +31,7 @@ describe("rectanglesIntersect", function () {
 });
 
 describe("shapesIntersect", function () {
-    describe("#lineSegmenets", function () {
+    describe("line segmenets", function () {
         it("returns true if line segments intersect", function () {
             assert(
                 shapesIntersect(lineSegment(point(1, 1), point(5, 6)), lineSegment(point(3, 4), point(4, 2))),
